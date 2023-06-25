@@ -8,10 +8,9 @@ results <- list(c(), c(), c(), c())
 
 for (i in 1:4) {
     n <- ns[i]
-    x <- rexp(n, rate)
+    z <- qnorm(alpha)
     for (r in rates_sec) {
-        t <- (sqrt(n) * (mean(x) - (1 / r)) / (1 / (r^2)))
-        k <- pnorm(t)
+        k <- pgamma(2 + 2 * z / sqrt(n), n, n * r)
         results[[i]] <- c(results[[i]], k)
     }
 }

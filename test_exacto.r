@@ -8,9 +8,9 @@ results <- list(c(), c(), c(), c())
 
 for (i in 1:4) {
     n <- ns[i]
-    x <- sum(rexp(n, rate))
+    q <- qgamma(alpha, n, rate)
     for (r in rates_sec) {
-        k <- pgamma(x, n, r)
+        k <- pgamma(q, n, r)
         results[[i]] <- c(results[[i]], k)
     }
 }
